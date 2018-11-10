@@ -1,3 +1,7 @@
+.btn {
+  background-color: rgb(68, 183, 241);
+}
+
 #charity-display {
   background-color: lightgreen;
 }
@@ -15,7 +19,7 @@ input {
 }
 
 #searchFormContainer {
-  background-color: lightblue;
+  background-color: rgb(68, 183, 241);
 }
 
 #search-image {
