@@ -28,19 +28,22 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
 
 // click or submit of the search parameters
 $('#run-search').on('click', function(e) {
-  // prevent page refresh
-  e.preventDefault();
 
+  // validating search input is not blank
+  if ($('#search-input').val() != '') {
 
-  // run URL builder function and set to function scoped variable
-  var searchURL = buildURL();
+    // prevent page refresh
+    e.preventDefault();
 
-  // clear search parameter after submit as well as after building URL
+    // run URL builder function and set to function scoped variable
+    var searchURL = buildURL();
+
+    // ajax call using searchURL
+    $.ajax({
+      url: searchURL,
+      method: 'GET'
+    }).then(printResults)  //  run print results function when response is received
+  } 
+  // clear search parameter after validation is complete
   $('#search-input').val('');
-  
-  // ajax call using searchURL
-  $.ajax({
-    url: searchURL,
-    method: 'GET'
-  }).then(printResults)  //  run print results function when response is received
 });

@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // 
 // 
-//                            CHARITY FUNCTIONS 
+//                            CHARITY API FUNCTIONS 
 // 
 // 
 /////////////////////////////////////////////////////////////////////////////
@@ -9,7 +9,7 @@
 // function to build URL for ajax call
 function buildURL() {
   var queryURL = 'https://api.data.charitynavigator.org/v2/Organizations?';
-
+  
   // default parameters on API URL
   var queryParameters = { 
     'app_id': '262a6a90',
@@ -99,4 +99,13 @@ function printResults(response) {
 // clears the list of charities on the screen
 function clear() {
   $('#charity-list').empty();
+}
+
+// search validation function
+function searchValid() {
+  console.log($('#search-input').val());
+  var search = document.forms[0]['search-input'].value;
+  if (search == '') {
+    return false;
+  }
 }

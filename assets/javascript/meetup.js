@@ -8,13 +8,14 @@ var eventResult;
 
 function meetupFind(groupInfo){
     var search = groupInfo;
+    console.log(search);
     // queryURL =  "https://api.meetup.com/2/events?key=352d3f6d5219b5121f804152572749&group_urlname="+search+"&sign=true";
     queryURL = "https://api.meetup.com/find/upcoming_events?key=352d3f6d5219b5121f804152572749&sign=true&photo-host=public&page=20&text=" + search;
     $.ajax({
         url: queryURL,
         method: "GET"
         }).then(function(response) {
-
+        console.log(response);
         //console.log(response.events[0])
 
         //here creat a object that stores top 5 event, name, location(lat,lon), time,  duration, descrbtion, and link
@@ -65,7 +66,7 @@ function meetupFind(groupInfo){
 }
 
 //"A child's Place" is a test for the function
-console.log(meetupFind('A Child’s Place'))
+// console.log(meetupFind('A Child’s Place'))
 
 // Iniciate a map, make it center at your location, if can't use your location, use the default
 var map, infoWindow;
