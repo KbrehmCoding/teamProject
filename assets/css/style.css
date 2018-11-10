@@ -17,3 +17,9 @@ input {
 #searchFormContainer {
   background-color: lightblue;
 }
+
+#search-image {
+  height: 500px;
+  margin: auto;
+  width: 500px;
+}
