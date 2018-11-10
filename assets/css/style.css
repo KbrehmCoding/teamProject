@@ -1,30 +1,20 @@
 input {
   width: 250px;
 }
-.col-lg-6 {
-  margin-left: 200px;
-}
+
 .jumbotron {
   height: 300px;
   text-align: center;
 }
+
 #searchFormContainer {
-  margin-bottom: 100px;
-  margin-left: 150px;
   background-color: lightblue;
   height: 100px;
   width: 1135px;
 }
-#search-results {
-  margin-left: 150px;
+
+#charity-display {
   background-color: lightgreen;
   height: 1000px;
   width: 1135px;
-}
-#space {
-  height: 100px;
-}
-.topnav {
-  float: left;
-  margin-right: 200px;
 }
