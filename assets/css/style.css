@@ -20,13 +20,12 @@ input {
 }
 
 .jumbotron {
-  background-color: white !important;
+  background-color: white!important;
   text-align: center;
 }
 
 .logo {
-  height:300px;
-  width: 400px;
+  height: 300px;
 }
 
 #searchFormContainer {
