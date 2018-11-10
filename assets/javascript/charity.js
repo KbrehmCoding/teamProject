@@ -13,10 +13,10 @@ function buildURL() {
   queryParameters.search = $('#search-input').val().trim();
 
   var stateSelection = $('#state').val();  
-
   if (stateSelection !== '') {
     queryParameters.state = stateSelection;
   }
+
   // return the completed URL to the function call
   return queryURL + $.param(queryParameters);
   // CONSOLE LOGS TO ENSURE URL IS CORRECT
@@ -33,22 +33,52 @@ function printResults(response) {
   var resultCount = $('#result-count').val();
   for (let i = 0; i < resultCount; i++) {
     var newTitle = $('<h5>');
-    newTitle.addClass('card-title');
-    newTitle.text(response[i].organization.charityName);
+    newTitle.addClass('card-title')
+      .css('display', 'inline-block')
+      .css('margin-right', '5px')
+      .text(response[i].organization.charityName)
+    ;
+
+    var ratingImage = $('<img>');
+    ratingImage
+      .css('display', 'inline-block')
+      .css('text-decoration', 'none')
+      .attr('src', response[i].currentRating.ratingImage.large)
+    ;
 
     var newTagline = $('<p>');
-    newTagline.addClass('card-text');
-    newTagline.text(response[i].tagLine);
+    newTagline
+      .addClass('card-text')
+      .css('text-decoration', 'underline')
+      .text('Tagline: ' + response[i].tagLine)
+    ;
+
+    var mission = $('<p>');
+    mission
+      .addClass('card-text ') //************************************************HIDDEN CLASS HIDDEN CLASS */
+      .text(response[i].mission)
+    ;
 
     var moreButton = $('<a>');
-    moreButton.addClass('btn btn-primary');
-    moreButton.attr('href', '#');
-    moreButton.text('More Information');
+    moreButton
+      .addClass('btn btn-primary m-1')
+      .attr('href', '#')
+      .text('More Information')
+    ;
 
-    $('#charity-list').append(newTitle, newTagline, moreButton)
+    var meetupButton = $('<a>');
+    meetupButton
+      .addClass('btn btn-primary m-1')
+      .attr('href', '#')
+      .text('Find Meetup Events')
+    ;
+
+    $('#charity-list').append(newTitle, ratingImage, newTagline, mission, moreButton, meetupButton)
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
     }
+
+
   }
 }
 
@@ -71,16 +101,3 @@ $('#run-search').on('click', function(e) {
     method: 'GET'
   }).then(printResults)
 });
-
-// var resultCount = $('#result-count').val()    
-// USE THIS WHEN UPDATING THE PAGE. GRABS THE NUMBER OF ARTICLES TO SHOW
-
-// FORMAT TO USE WHEN DISPLAYING IMAGES STARTING WITH H5
-/* <div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> */
