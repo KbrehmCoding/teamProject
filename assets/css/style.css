@@ -2,6 +2,11 @@
   background-color: rgb(68, 183, 241);
 }
 
+.card-header,
+label {
+  color: white;
+}
+
 #charity-display {
   background-color: rgb(91, 177, 44);
 }
