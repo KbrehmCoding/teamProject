@@ -3,18 +3,13 @@ input {
 }
 
 .jumbotron {
-  height: 300px;
   text-align: center;
 }
 
 #searchFormContainer {
   background-color: lightblue;
-  height: 100px;
-  width: 1135px;
 }
 
 #charity-display {
   background-color: lightgreen;
-  height: 1000px;
-  width: 1135px;
 }
