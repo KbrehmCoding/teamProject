@@ -55,20 +55,22 @@ function printResults(response) {
 
     var mission = $('<p>');
     mission
-      .addClass('card-text ') //************************************************HIDDEN CLASS HIDDEN CLASS */
+      .attr('id', 'mission' + i)
+      .addClass('card-text hidden') //************************************************HIDDEN CLASS HIDDEN CLASS */
       .text(response[i].mission)
     ;
 
     var moreButton = $('<a>');
     moreButton
-      .addClass('btn btn-primary m-1')
+      .addClass('btn btn-primary m-1 moreInfo')
       .attr('href', '#')
+      .attr('value', 'mission' + i)
       .text('More Information')
     ;
 
     var meetupButton = $('<a>');
     meetupButton
-      .addClass('btn btn-primary m-1')
+      .addClass('btn btn-primary m-1 meetupInfo')
       .attr('href', '#')
       .text('Find Meetup Events')
     ;
@@ -82,10 +84,25 @@ function printResults(response) {
   }
 }
 
+
+
 // clears the list of charities on the screen
 function clear() {
   $('#charity-list').empty();
 }
+
+$('#charity-display').on('click', '.moreInfo', function(event) {
+  event.preventDefault();
+  console.log(event);
+  // var buttonClickedId = $()
+
+})
+
+$('#charity-display').on('click', '.meetupInfo', function(event) {
+  event.preventDefault();
+  console.log(event)
+
+})
 
 $('#run-search').on('click', function(e) {
   // prevent page refresh
