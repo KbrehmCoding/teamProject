@@ -12,8 +12,7 @@ function buildURL() {
   // search parameter
   queryParameters.search = $('#search-input').val().trim();
 
-  var stateSelection = $('#state').val();  // need to grab state value from html   ***********************//
-  console.log(stateSelection);
+  var stateSelection = $('#state').val();  
 
   if (stateSelection !== '') {
     queryParameters.state = stateSelection;
@@ -31,7 +30,26 @@ function buildURL() {
 
 function printResults(response) {
   console.log(response);
-  // need to write function to take response and print select information to the screen  ************************************************************************ 
+  var resultCount = $('#result-count').val();
+  for (let i = 0; i < resultCount; i++) {
+    var newTitle = $('<h5>');
+    newTitle.addClass('card-title');
+    newTitle.text(response[i].organization.charityName);
+
+    var newTagline = $('<p>');
+    newTagline.addClass('card-text');
+    newTagline.text(response[i].tagLine);
+
+    var moreButton = $('<a>');
+    moreButton.addClass('btn btn-primary');
+    moreButton.attr('href', '#');
+    moreButton.text('More Information');
+
+    $('#charity-list').append(newTitle, newTagline, moreButton)
+    if (i < resultCount-1) {
+      $('#charity-list').append($('<hr>'));
+    }
+  }
 }
 
 // clears the list of charities on the screen
