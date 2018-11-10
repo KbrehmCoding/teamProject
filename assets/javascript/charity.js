@@ -11,7 +11,6 @@ function buildURL() {
   };
   // search parameter
   queryParameters.search = $('#search-input').val().trim();
-
   var stateSelection = $('#state').val();  
   if (stateSelection !== '') {
     queryParameters.state = stateSelection;
@@ -19,17 +18,12 @@ function buildURL() {
 
   // return the completed URL to the function call
   return queryURL + $.param(queryParameters);
-  // CONSOLE LOGS TO ENSURE URL IS CORRECT
-  console.log('-----------------------------------------')
-  console.log('URL:' + queryURL)
-  console.log('-----------------------------------------')
-  console.log('-----------------------------------------')
-  console.log(queryURL + $.param(queryParameters));
-  console.log('-----------------------------------------')
 }
 
 function printResults(response) {
   console.log(response);
+  // clear current results if any
+  clear();
   var resultCount = $('#result-count').val();
   for (let i = 0; i < resultCount; i++) {
     var newTitle = $('<h5>');
@@ -56,7 +50,7 @@ function printResults(response) {
     var mission = $('<p>');
     mission
       .attr('id', 'mission' + i)
-      .addClass('card-text hidden') //************************************************HIDDEN CLASS HIDDEN CLASS */
+      .addClass('card-text hidden')
       .text(response[i].mission)
     ;
 
@@ -72,6 +66,7 @@ function printResults(response) {
     meetupButton
       .addClass('btn btn-primary m-1 meetupInfo')
       .attr('href', '#')
+      .attr('data-title', response[i].organization.charityName)
       .text('Find Meetup Events')
     ;
 
@@ -79,12 +74,8 @@ function printResults(response) {
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
     }
-
-
   }
 }
-
-
 
 // clears the list of charities on the screen
 function clear() {
@@ -93,22 +84,20 @@ function clear() {
 
 $('#charity-display').on('click', '.moreInfo', function(event) {
   event.preventDefault();
-  console.log(event);
-  // var buttonClickedId = $()
-
+  var clickedValue = event.currentTarget.attributes[2].value;
+  $('#' + clickedValue).toggleClass('hidden');
 })
 
 $('#charity-display').on('click', '.meetupInfo', function(event) {
   event.preventDefault();
   console.log(event)
-
+  var charityName = event.currentTarget.attributes[2].value;
+  meetupFind(charityName);
 })
 
 $('#run-search').on('click', function(e) {
   // prevent page refresh
   e.preventDefault();
-  // clear current results if any
-  clear();
 
   // run URL builder function and set to function scoped variable
   var searchURL = buildURL();
