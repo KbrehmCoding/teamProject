@@ -7,6 +7,11 @@ label {
   color: white;
 }
 
+.card-title,
+.card-text {
+  color: white;
+}
+
 #charity-display {
   background-color: rgb(91, 177, 44);
 }
