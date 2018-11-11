@@ -5,7 +5,7 @@
 // 
 // 
 /////////////////////////////////////////////////////////////////////////////
-
+var searchTerm;
 // function to build URL for ajax call
 function buildURL() {
   var queryURL = 'https://api.data.charitynavigator.org/v2/Organizations?';
@@ -19,6 +19,8 @@ function buildURL() {
   };
   // search parameter
   queryParameters.search = $('#search-input').val().trim();
+  searchTerm = $('#search-input').val().trim();
+
   var stateSelection = $('#state').val();  
   if (stateSelection !== '') {
     queryParameters.state = stateSelection;
@@ -83,7 +85,7 @@ function printResults(response) {
     meetupButton
       .addClass('btn btn-primary m-1 meetupInfo')  //  bootstrap styling and meetupInfo for click listener
       .attr('href', '#')  //  dead link
-      .attr('data-title', response[i].organization.charityName)  //  data attribute to send to meetup function
+      .attr('data-title', searchTerm + ' Charity')  //  data attribute to send to meetup function
       .text('Find Meetup Events')  //  button text
     ;
 

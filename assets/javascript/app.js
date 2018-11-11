@@ -21,9 +21,9 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   // prevent page refresh
   event.preventDefault();
   // variable to grab the data-title information to feed into the meetup.js function
-  var charityName = event.currentTarget.attributes[2].value;
+  var charitySearch = event.currentTarget.attributes[2].value;
   // run meetup function
-  meetupFind(charityName);
+  meetupFind(charitySearch);
 })
 
 // click or submit of the search parameters
