@@ -63,6 +63,11 @@ function printResults(response) {
       .text('Tagline: ' + response[i].tagLine)  //  input tagline from response
     ;
 
+    var deductibility = $('<p>');
+    deductibility
+      .addClass('card-text')
+      .text(response[i].irsClassification.deductibility)
+
     // variable for mission statement
     var mission = $('<p>');
     mission
@@ -90,7 +95,7 @@ function printResults(response) {
     ;
 
     // append all variables for screen display
-    $('#charity-list').append(newTitle, ratingImage, newTagline, mission, moreButton, meetupButton)
+    $('#charity-list').append(newTitle, ratingImage, newTagline, deductibility, mission, moreButton, meetupButton)
     // add in horizontal rule after every charity section except the last
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
