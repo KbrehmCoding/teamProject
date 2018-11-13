@@ -1,7 +1,15 @@
-
+/////////////////////////////////////////////////////////////////////////////
+// 
+// 
+//                            CHARITY API FUNCTIONS 
+// 
+// 
+/////////////////////////////////////////////////////////////////////////////
+var searchTerm;
+// function to build URL for ajax call
 function buildURL() {
   var queryURL = 'https://api.data.charitynavigator.org/v2/Organizations?';
-
+  
   // default parameters on API URL
   var queryParameters = { 
     'app_id': '262a6a90',
@@ -11,6 +19,7 @@ function buildURL() {
   };
   // search parameter
   queryParameters.search = $('#search-input').val().trim();
+  searchTerm = $('#search-input').val().trim();
 
   var stateSelection = $('#state').val();  
   if (stateSelection !== '') {
@@ -19,66 +28,78 @@ function buildURL() {
 
   // return the completed URL to the function call
   return queryURL + $.param(queryParameters);
-  // CONSOLE LOGS TO ENSURE URL IS CORRECT
-  console.log('-----------------------------------------')
-  console.log('URL:' + queryURL)
-  console.log('-----------------------------------------')
-  console.log('-----------------------------------------')
-  console.log(queryURL + $.param(queryParameters));
-  console.log('-----------------------------------------')
 }
 
+// function that clears search image and then prints results to list
 function printResults(response) {
   console.log(response);
+  // clear current results if any
+  clear();
+  // variable to hold the number of results the user requests
   var resultCount = $('#result-count').val();
+  // loop through requests and add them to the screen
   for (let i = 0; i < resultCount; i++) {
+    // variable to hold name of charity
     var newTitle = $('<h5>');
-    newTitle.addClass('card-title')
-      .css('display', 'inline-block')
-      .css('margin-right', '5px')
-      .text(response[i].organization.charityName)
+    newTitle
+      .addClass('card-title')  //  bootstrap class
+      .css('display', 'inline-block')  //  custom css
+      .css('margin-right', '5px')  //  space this element away from the next
+      .text(response[i].organization.charityName)  //  input name from object to text
     ;
 
+    // create variable for star rating image
     var ratingImage = $('<img>');
     ratingImage
-      .css('display', 'inline-block')
-      .css('text-decoration', 'none')
-      .attr('src', response[i].currentRating.ratingImage.large)
+      .css('display', 'inline-block')  //  make sure this is on the same line as title
+      .attr('src', response[i].currentRating.ratingImage.large)  //  set image src
     ;
 
+    // variable to hold tagline
     var newTagline = $('<p>');
     newTagline
-      .addClass('card-text')
-      .css('text-decoration', 'underline')
-      .text('Tagline: ' + response[i].tagLine)
+      .addClass('card-text')  //  bootstrap styling
+      .css('text-decoration', 'underline')  //  underline the tagline for emphasis
+      .text('Tagline: ' + response[i].tagLine)  //  input tagline from response
     ;
 
+    var deductibility = $('<p>');
+    deductibility
+      .addClass('card-text')
+      .text(response[i].irsClassification.deductibility)
+
+    // variable for mission statement
     var mission = $('<p>');
     mission
-      .addClass('card-text ') //************************************************HIDDEN CLASS HIDDEN CLASS */
-      .text(response[i].mission)
+      .attr('id', 'mission' + i)  //  individual labels to grab later
+      .addClass('card-text hidden')  //  hide by default
+      .text(response[i].mission)  //  insert mission statement text
     ;
 
+    // variable for more information button
     var moreButton = $('<a>');
     moreButton
-      .addClass('btn btn-primary m-1')
-      .attr('href', '#')
-      .text('More Information')
+      .addClass('btn btn-primary m-1 moreInfo')  //  bootstrap styling and moreInfo  for click listener
+      .attr('href', '#')  //  dead link
+      .attr('value', 'mission' + i)  //  value to match button to mission statement
+      .text('More Information')  //  button text
     ;
 
+    // variable for meetup button
     var meetupButton = $('<a>');
     meetupButton
-      .addClass('btn btn-primary m-1')
-      .attr('href', '#')
-      .text('Find Meetup Events')
+      .addClass('btn btn-primary m-1 meetupInfo')  //  bootstrap styling and meetupInfo for click listener
+      .attr('href', '#')  //  dead link
+      .attr('data-title', searchTerm + ' Charity')  //  data attribute to send to meetup function
+      .text('Find Meetup Events')  //  button text
     ;
 
-    $('#charity-list').append(newTitle, ratingImage, newTagline, mission, moreButton, meetupButton)
+    // append all variables for screen display
+    $('#charity-list').append(newTitle, ratingImage, newTagline, deductibility, mission, moreButton, meetupButton)
+    // add in horizontal rule after every charity section except the last
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
     }
-
-
   }
 }
 
@@ -87,17 +108,11 @@ function clear() {
   $('#charity-list').empty();
 }
 
-$('#run-search').on('click', function(e) {
-  // prevent page refresh
-  e.preventDefault();
-  // clear current results if any
-  clear();
-
-  // run URL builder function and set to function scoped variable
-  var searchURL = buildURL();
-
-  $.ajax({
-    url: searchURL,
-    method: 'GET'
-  }).then(printResults)
-});
+// search validation function
+function searchValid() {
+  console.log($('#search-input').val());
+  var search = document.forms[0]['search-input'].value;
+  if (search == '') {
+    return false;
+  }
+}
