@@ -47,7 +47,9 @@ input {
 }
 
 .donate-button {
-  float: left;
+  position: relative;
+  right: 5px;
+  top: 20px;
 	max-height: 50px;
 	max-width: 50px;
 }
@@ -56,4 +58,10 @@ input {
   max-height: 200px;
   width: auto;
   margin: auto;
+}
+.card-text {
+  margin-bottom: 0;
+}
+.moreInfo {
+  margin-right: 10px !important;
 }
