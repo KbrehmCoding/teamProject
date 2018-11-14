@@ -101,8 +101,6 @@ function printResults(response) {
       .attr('data-id', response[i].ein)
       .attr('data-toggle', 'modal')
       .attr('data-target', '#donateModal')
-      .css('max-height', '50px')
-      .css('max-width', '50px')
       .addClass('donate-button')
     ;
 
