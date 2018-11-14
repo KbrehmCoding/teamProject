@@ -45,3 +45,8 @@ input {
   height: 300px;
   width: 300px;
 }
+
+.donate-button {
+	max-height: 50px;
+	max-width: 50px;
+}
