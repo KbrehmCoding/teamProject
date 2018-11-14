@@ -94,8 +94,20 @@ function printResults(response) {
       .text('Find Meetup Events')  //  button text
     ;
 
+    var donateButton = $('<input>');
+    donateButton
+      .attr('type', 'image')
+      .attr('src', 'assets/images/dollarsign.png')
+      .attr('data-id', response[i].ein)
+      .attr('data-toggle', 'modal')
+      .attr('data-target', '#donateModal')
+      .css('max-height', '50px')
+      .css('max-width', '50px')
+      .addClass('donate-button')
+    ;
+
     // append all variables for screen display
-    $('#charity-list').append(newTitle, ratingImage, newTagline, deductibility, mission, moreButton, meetupButton)
+    $('#charity-list').append(newTitle, ratingImage, newTagline, deductibility, mission, moreButton, meetupButton, donateButton)
     // add in horizontal rule after every charity section except the last
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
