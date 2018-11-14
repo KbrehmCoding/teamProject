@@ -67,7 +67,7 @@ function printResults(response) {
     deductibility
       .addClass('card-text')
       .text(response[i].irsClassification.deductibility)
-
+    ;
     // variable for mission statement
     var mission = $('<p>');
     mission
@@ -94,18 +94,31 @@ function printResults(response) {
       .text('Find Meetup Events')  //  button text
     ;
 
+    // variable for donate image button
     var donateButton = $('<input>');
     donateButton
-      .attr('type', 'image')
-      .attr('src', 'assets/images/dollarsign.png')
-      .attr('data-id', response[i].ein)
-      .attr('data-toggle', 'modal')
-      .attr('data-target', '#donateModal')
-      .addClass('donate-button')
+      .attr('type', 'image')  //  designating input type
+      .attr('src', 'assets/images/dollarsign.png')  //  setting image src
+      .attr('data-id', response[i].ein)  //  setting id to EIN number from response for database
+      .attr('data-toggle', 'modal')  //  toggle open modal
+      .attr('data-target', '#donateModal')  //  target for modal ID
+      .addClass('donate-button')  //  class for styling in css
     ;
 
+
+
     // append all variables for screen display
-    $('#charity-list').append(newTitle, ratingImage, newTagline, deductibility, mission, moreButton, meetupButton, donateButton)
+    $('#charity-list').append(
+      newTitle, 
+      ratingImage, 
+      newTagline, 
+      deductibility, 
+      mission, 
+      moreButton, 
+      meetupButton, 
+      donateButton
+    )
+
     // add in horizontal rule after every charity section except the last
     if (i < resultCount-1) {
       $('#charity-list').append($('<hr>'));
@@ -126,3 +139,12 @@ function searchValid() {
     return false;
   }
 }
+
+$(document).on('click', '.donate-button', function(e) {
+  e.preventDefault();
+  var ein = $(this).attr('data-id');
+  console.log(ein);
+
+  // firebase donate click function
+
+})
