@@ -47,6 +47,13 @@ input {
 }
 
 .donate-button {
+  float: left;
 	max-height: 50px;
-  max-width: 50px;
+	max-width: 50px;
+}
+
+.carousel-inner img {
+  max-height: 200px;
+  width: auto;
+  margin: auto;
 }
