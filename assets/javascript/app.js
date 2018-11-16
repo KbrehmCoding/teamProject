@@ -19,12 +19,23 @@ $('#charity-display').on('click', '.moreInfo', function(event) {
 // click function for MEETUP INFORMATION
 $('#charity-display').on('click', '.meetupInfo', function(event) {
   // prevent page refresh
-  event.preventDefault();
-  // variable to grab the data-title information to feed into the meetup.js function
+  event.preventDefault(); 
   var charitySearch = event.currentTarget.attributes[2].value;
-  // run meetup function
-  meetupFind(charitySearch);
+  popUpdiv(charitySearch);
+  $(".popup-overlay, .popup-content").addClass("active");
+  // // variable to grab the data-title information to feed into the meetup.js function
+
+  // // run meetup function
+  // meetupFind(charitySearch);
+
+
 })
+
+ $(document).on("click",".close", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+  console.log("you clicked")
+ });
+
 
 // click or submit of the search parameters
 $('#run-search').on('click', function(e) {

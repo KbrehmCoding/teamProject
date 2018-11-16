@@ -39,6 +39,8 @@ function printResults(response) {
   var resultCount = $('#result-count').val();
   // loop through requests and add them to the screen
   for (let i = 0; i < resultCount; i++) {
+
+    var newDiv = $('<div>');
     // variable to hold name of charity
     var newTitle = $('<h5>');
     newTitle
@@ -101,14 +103,14 @@ function printResults(response) {
       .attr('src', 'assets/images/dollarsign.png')  //  setting image src
       .attr('data-id', response[i].ein)  //  setting id to EIN number from response for database
       .attr('data-toggle', 'modal')  //  toggle open modal
-      .attr('data-target', '#donateModal')  //  target for modal ID
+      .attr('data-target', '#myModal')  //  target for modal ID
       .addClass('donate-button')  //  class for styling in css
     ;
 
 
 
     // append all variables for screen display
-    $('#charity-list').append(
+    newDiv.append(
       newTitle, 
       ratingImage, 
       newTagline, 
@@ -118,6 +120,8 @@ function printResults(response) {
       meetupButton, 
       donateButton
     )
+
+    $('#charity-list').append(newDiv);
 
     // add in horizontal rule after every charity section except the last
     if (i < resultCount-1) {
@@ -140,10 +144,21 @@ function searchValid() {
   }
 }
 
+function fillModal(charityClicked) {
+  // ADD NAME OF CHARITY TO MODAL
+  $('.modal-title').text('Donate to ' + charityClicked);
+}
+
+
 $(document).on('click', '.donate-button', function(e) {
-  e.preventDefault();
+  console.log('dolla dolla bills')
+  // e.preventDefault();
+  var charityClicked = e.currentTarget.parentElement.children[0].innerHTML
   var ein = $(this).attr('data-id');
-  console.log(ein);
+  fillModal(charityClicked); 
+  // console.log(e);
+  // console.log(ein);
+  // console.log(charityClicked);
 
   // firebase donate click function
 
