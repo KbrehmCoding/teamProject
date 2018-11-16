@@ -27,7 +27,7 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   var clickedDiv = event.currentTarget.parentElement.id;
   var divId = '#'+clickedDiv;
   console.log(divId);
-  popUpdiv(charitySearch, divId);
+  popUpdiv();
   $(".popup-overlay, .popup-content").addClass("active");
   // // variable to grab the data-title information to feed into the meetup.js function
 

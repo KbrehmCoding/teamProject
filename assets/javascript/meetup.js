@@ -4,26 +4,26 @@ var eventResult;
 
 // Iniciate a map, make it center at your location, if can't use your location, use the default
 var map, infoWindow;
-var container;
+//var container;
 //creat a function to creat pop-up div
 //also make meetupFind a call back function ?? or  
 
 var popDiv = $("<div>")
 popDiv.attr("class","popup-overlay");
-$(container).append(popDiv);
+$("#charity-list").prepend(popDiv);
 var contDiv = $("<div>");
 contDiv.attr("class","popup-content");
 contDiv.attr("id","map_preload")
 popDiv.append(contDiv);
 var closeBtn = $("<button>");
 
-function popUpdiv(pramater,pageDiv){
+function popUpdiv(){
   closeBtn.attr("class","close"); 
   closeBtn.attr("id","clBtn");
   closeBtn.css("width","100px")
   closeBtn.text("close")
   popDiv.append(closeBtn);
-  container = pageDiv;
+  //container = pageDiv;
   
    meetupFind("animal")
 }
