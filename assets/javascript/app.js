@@ -43,6 +43,7 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   $(".popup-overlay, .popup-content").removeClass("active");
   console.log("you clicked")
   $('.popup-overlay').addClass('hidden');
+  markerHolder = [];
  });
 
 

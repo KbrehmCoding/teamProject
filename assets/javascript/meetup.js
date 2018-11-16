@@ -1,7 +1,7 @@
 //variables are listed here
 //eventResult is object that hold info of related events
 var eventResult;
-
+var markerHolder = [];
 // Iniciate a map, make it center at your location, if can't use your location, use the default
 var map, infoWindow;
 //var container;
@@ -103,7 +103,7 @@ function meetupFind(groupInfo){
         console.log(eventResult)
 
         //add pionts
-        var markerHolder = [];
+        markerHolder = [];
         //using a loop to display the places
         for(i=0;i<N;i++){    
          markerHolder[i] = new google.maps.Marker({
@@ -134,8 +134,8 @@ $(".open").on("click", function(){
 //     console.log("clicked")
 //    });
 
-$(document).on("click",".close", function(){
-  $(".popup-overlay, .popup-content").removeClass("active");
-  console.log("you clicked")
-});
+// $(document).on("click",".close", function(){
+//   $(".popup-overlay, .popup-content").removeClass("active");
+//   console.log("you clicked")
+// });
 
