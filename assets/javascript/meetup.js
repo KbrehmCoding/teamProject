@@ -70,7 +70,7 @@ function meetupFind(groupInfo){
           textDiv.css("margin-top","0px")
           textDiv.css("z-index","3")
           $(".popup-overlay").prepend(textDiv);
-          $('.popup-content').css('height', '80%');
+          $('.popup-content').css('height', '85%');
         }
 
         if(numEvents>0){

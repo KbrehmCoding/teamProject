@@ -20,6 +20,7 @@ $('#charity-display').on('click', '.moreInfo', function(event) {
 $('#charity-display').on('click', '.meetupInfo', function(event) {
   // prevent page refresh
   event.preventDefault(); 
+  $('#return-text').remove();
   var charitySearch = event.currentTarget.attributes[2].value;
   console.log('------------------------------------')
   console.log(event)
@@ -43,7 +44,7 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   $(".popup-overlay, .popup-content").removeClass("active");
   console.log("you clicked")
   $('.popup-overlay').addClass('hidden');
-  markerHolder = [];
+  $('#return-text').remove();
  });
 
 
