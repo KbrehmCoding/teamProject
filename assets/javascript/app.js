@@ -27,8 +27,10 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   var clickedDiv = event.currentTarget.parentElement.id;
   var divId = '#'+clickedDiv;
   console.log(divId);
-  popUpdiv();
+  popUpdiv(charitySearch);
   $(".popup-overlay, .popup-content").addClass("active");
+
+  $('.popup-overlay').removeClass('hidden');
   // // variable to grab the data-title information to feed into the meetup.js function
 
   // // run meetup function
@@ -40,6 +42,7 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
  $(document).on("click",".close", function(){
   $(".popup-overlay, .popup-content").removeClass("active");
   console.log("you clicked")
+  $('.popup-overlay').addClass('hidden');
  });
 
 

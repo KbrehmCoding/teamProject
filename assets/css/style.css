@@ -66,9 +66,9 @@ input {
   margin-right: 10px !important;
 }
 
-* element that contains the map. */
+/* element that contains the map. */
 #map_preload {
- height: 80%;
+ height: 95%;
  width:  100%;
  z-index: 2;
 }
@@ -76,12 +76,13 @@ input {
 
 .popup-overlay{
   /*Hides pop-up when there is no "active" class*/
+  margin: 0 auto;
   visibility:hidden;
   position:static;
   background:lightgoldenrodyellow;
   border:3px solid #666666;
-  width:80%;
-  height:60%;
+  width: 800px;
+  height:500px;
   left:10%; 
  }
 
@@ -107,4 +108,8 @@ color: blue;
 
 #clBtn{
   z-index: 3;
+}
+
+.hidden {
+  display:none;
 }

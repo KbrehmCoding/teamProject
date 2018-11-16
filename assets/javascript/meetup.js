@@ -9,23 +9,26 @@ var map, infoWindow;
 //also make meetupFind a call back function ?? or  
 
 var popDiv = $("<div>")
-popDiv.attr("class","popup-overlay");
-$("#charity-list").prepend(popDiv);
+popDiv.attr("class","popup-overlay").addClass('hidden');
+
 var contDiv = $("<div>");
 contDiv.attr("class","popup-content");
 contDiv.attr("id","map_preload")
 popDiv.append(contDiv);
+$("#map").prepend(popDiv);
+
 var closeBtn = $("<button>");
 
-function popUpdiv(){
+function popUpdiv(charity){
   closeBtn.attr("class","close"); 
   closeBtn.attr("id","clBtn");
   closeBtn.css("width","100px")
   closeBtn.text("close")
   popDiv.append(closeBtn);
-  //container = pageDiv;
+  console.log(charity)
+
   
-   meetupFind("animal")
+   meetupFind(charity)
 }
 
 function getmap(){
@@ -67,6 +70,7 @@ function meetupFind(groupInfo){
           textDiv.css("margin-top","0px")
           textDiv.css("z-index","3")
           $(".popup-overlay").prepend(textDiv);
+          $('.popup-content').css('height', '80%');
         }
 
         if(numEvents>0){
