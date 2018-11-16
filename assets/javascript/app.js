@@ -21,7 +21,12 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   // prevent page refresh
   event.preventDefault(); 
   var charitySearch = event.currentTarget.attributes[2].value;
-  popUpdiv(charitySearch);
+  console.log('------------------------------------')
+  console.log(event)
+  console.log('------------------------------------')
+  var clickedDiv = event.currentTarget.parentElement.className;
+  console.log(clickedDiv);
+  popUpdiv(charitySearch, clickedDiv);
   $(".popup-overlay, .popup-content").addClass("active");
   // // variable to grab the data-title information to feed into the meetup.js function
 

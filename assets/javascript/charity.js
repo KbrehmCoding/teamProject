@@ -40,7 +40,7 @@ function printResults(response) {
   // loop through requests and add them to the screen
   for (let i = 0; i < resultCount; i++) {
 
-    var newDiv = $('<div>');
+    var newDiv = $('<div>').addClass('charity-div');
     // variable to hold name of charity
     var newTitle = $('<h5>');
     newTitle
