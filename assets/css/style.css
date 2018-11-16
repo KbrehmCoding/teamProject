@@ -65,3 +65,46 @@ input {
 .moreInfo {
   margin-right: 10px !important;
 }
+
+* element that contains the map. */
+#map_preload {
+ height: 80%;
+ width:  100%;
+ z-index: 2;
+}
+/* Optional: Makes the sample page fill the window. */
+
+.popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  position:absolute;
+  background:lightgoldenrodyellow;
+  border:3px solid #666666;
+  width:80%;
+  height:60%;
+  left:10%; 
+ }
+
+.popup-overlay.active{
+/*displays pop-up when "active" class is present*/
+visibility:visible;
+text-align:center;
+color: blue;
+}
+
+
+.popup-content {
+      visibility:hidden;
+}
+
+.popup-content.active {
+      visibility:visible;
+}
+
+#return-text{
+  color: rgb(217, 255, 0);
+}
+
+#clBtn{
+  z-index: 3;
+}
