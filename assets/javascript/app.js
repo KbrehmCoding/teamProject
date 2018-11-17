@@ -45,6 +45,7 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   console.log("you clicked")
   $('.popup-overlay').addClass('hidden');
   $('#return-text').remove();
+  cleanMap();
  });
 
 

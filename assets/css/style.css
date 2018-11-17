@@ -104,6 +104,9 @@ color: blue;
 
 #return-text{
   color: rgb(217, 255, 0);
+  height: 8%;
+  padding: 6px;
+  text-align: center;
 }
 
 #clBtn{
