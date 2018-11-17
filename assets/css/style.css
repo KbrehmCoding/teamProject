@@ -13,6 +13,10 @@ label {
 
 .card-title,
 .card-text {
+  color: white !important;
+}
+
+a {
   color: white;
 }
 

@@ -47,8 +47,15 @@ function printResults(response) {
       .addClass('card-title')  //  bootstrap class
       .css('display', 'inline-block')  //  custom css
       .css('margin-right', '5px')  //  space this element away from the next
+    ;
+
+    var charityLink = $('<a href="'+response[i].websiteURL+'">');
+    charityLink
       .text(response[i].organization.charityName)  //  input name from object to text
     ;
+
+    console.log(charityLink);
+    newTitle.append(charityLink);
 
     // create variable for star rating image
     var ratingImage = $('<img>');
