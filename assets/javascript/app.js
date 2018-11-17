@@ -32,10 +32,10 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   $(".popup-overlay, .popup-content").addClass("active");
 
   $('.popup-overlay').removeClass('hidden');
-  // // variable to grab the data-title information to feed into the meetup.js function
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $("#map").offset().top
+  }, 1500);
 
-  // // run meetup function
-  // meetupFind(charitySearch);
 
 
 })
