@@ -52,9 +52,13 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
 // click or submit of the search parameters
 $('#run-search').on('click', function(e) {
 
+
   // validating search input is not blank
   if ($('#search-input').val() != '') {
-
+    
+    $('.popup-overlay').addClass('hidden');
+    $('#return-text').remove();
+    cleanMap();
     // prevent page refresh
     e.preventDefault();
 
