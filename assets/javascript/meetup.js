@@ -121,18 +121,19 @@ function meetupFind(groupInfo){
        });
 }
 
-//"A child's Place" is a test for the function
+//creat a function to clean markers
+ function cleanMap(){
+  for(i=0;i<markerHolder.length;i++){
+    markerHolder[i].setMap(null);
+  }
+   console.log("your clean map trigered")
+}
 
-$(".open").on("click", function(){
-  popUpdiv();
-  $(".popup-overlay, .popup-content").addClass("active");
- 
- });
 
-//  $(".close, .popup-overlay, body").on("click", function(){
-//   $(".popup-overlay, .popup-content").removeClass("active");
-//     console.log("clicked")
-//    });
+// $(".open").on("click", function(){
+//   popUpdiv();
+//   $(".popup-overlay, .popup-content").addClass("active");
+//  });
 
 // $(document).on("click",".close", function(){
 //   $(".popup-overlay, .popup-content").removeClass("active");

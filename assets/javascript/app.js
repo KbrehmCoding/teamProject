@@ -32,10 +32,10 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   $(".popup-overlay, .popup-content").addClass("active");
 
   $('.popup-overlay').removeClass('hidden');
-  // // variable to grab the data-title information to feed into the meetup.js function
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $("#map").offset().top
+  }, 1500);
 
-  // // run meetup function
-  // meetupFind(charitySearch);
 
 
 })
@@ -45,15 +45,20 @@ $('#charity-display').on('click', '.meetupInfo', function(event) {
   console.log("you clicked")
   $('.popup-overlay').addClass('hidden');
   $('#return-text').remove();
+  cleanMap();
  });
 
 
 // click or submit of the search parameters
 $('#run-search').on('click', function(e) {
 
+
   // validating search input is not blank
   if ($('#search-input').val() != '') {
-
+    
+    $('.popup-overlay').addClass('hidden');
+    $('#return-text').remove();
+    cleanMap();
     // prevent page refresh
     e.preventDefault();
 
