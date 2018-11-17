@@ -49,7 +49,7 @@ function printResults(response) {
       .css('margin-right', '5px')  //  space this element away from the next
     ;
 
-    var charityLink = $('<a href="'+response[i].websiteURL+'">');
+    var charityLink = $('<a href="'+response[i].websiteURL+'" target="_blank">');
     charityLink
       .text(response[i].organization.charityName)  //  input name from object to text
     ;
